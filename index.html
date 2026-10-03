@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Talita! 🎉</title>
+    
+    <!-- Importando Tailwind CSS para estilização rápida e responsiva -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Importando Fontes do Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Inter:wght@300;400;600&family=Pacifico&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        cursive: ['Pacifico', 'cursive'],
+                        handwriting: ['Caveat', 'cursive'],
+                    },
+                    colors: {
+                        party: {
+                            pink: '#FF6B6B',
+                            purple: '#A06CD5',
+                            yellow: '#FFE66D',
+                            blue: '#4ECDC4'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #fdfbf7;
+            background-image: radial-gradient(#A06CD5 0.5px, transparent 0.5px), radial-gradient(#FF6B6B 0.5px, #fdfbf7 0.5px);
+            background-size: 40px 40px;
+            background-position: 0 0, 20px 20px;
+            overflow-x: hidden;
+        }
+
+        /* Estilo das Fotos Polaroid */
+        .polaroid {
+            background: #ffffff;
+            padding: 12px 12px 60px 12px;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.15);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            position: relative;
+            border: 1px solid #eee;
+        }
+
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+            background-color: #f3f4f6;
+        }
+
+        .polaroid .caption {
+            position: absolute;
+            bottom: 15px;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-family: 'Caveat', cursive;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        /* Rotações alternadas para dar um ar descontraído */
+        .polaroid:nth-child(3n+1) { transform: rotate(-4deg); }
+        .polaroid:nth-child(3n+2) { transform: rotate(3deg) translateY(10px); }
+        .polaroid:nth-child(3n) { transform: rotate(-2deg) translateY(-5px); }
+
+        .polaroid:hover {
+            transform: scale(1.05) rotate(0deg);
+            box-shadow: 0 20px 35px -5px rgba(0, 0, 0, 0.25);
+            z-index: 10;
+        }
+
+        /* Canvas de Confetes */
+        #confetti-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        /* Animação suave para o balão flutuando */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="text-gray-800 antialiased relative min-h-screen flex flex-col">
+
+    <!-- Canvas para os confetes (Gerenciado pelo JS) -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <main class="flex-grow container mx-auto px-4 py-12 max-w-5xl relative z-10">
+        
+        <!-- Hero Section -->
+        <header class="text-center mb-16 pt-8">
+            <div class="inline-block mb-4 floating">
+                <span class="text-6xl md:text-8xl">🎂</span>
+            </div>
+            <h1 class="font-cursive text-6xl md:text-8xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-party-pink via-party-purple to-party-blue drop-shadow-sm mb-4">
+                Parabéns, Talita!
+            </h1>
+            <p class="text-xl md:text-2xl font-light text-gray-600 mt-4 max-w-2xl mx-auto">
+                Um dia inteiro dedicado a celebrar a pessoa incrível que você é. 🎉
+            </p>
+        </header>
+
+        <!-- Message Section -->
+        <section class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 md:p-12 mb-20 border border-white/50 relative overflow-hidden">
+            <!-- Decoração de fundo da carta -->
+            <div class="absolute -top-10 -right-10 text-party-yellow opacity-20 text-9xl">✨</div>
+            <div class="absolute -bottom-10 -left-10 text-party-pink opacity-20 text-9xl">🎈</div>
+            
+            <div class="relative z-10 max-w-3xl mx-auto text-center">
+                <h2 class="font-cursive text-4xl text-party-purple mb-6">Para minha grande amiga...</h2>
+                <div class="space-y-4 text-lg md:text-xl leading-relaxed text-gray-700">
+                    <p>
+                        Hoje o dia é todo seu, Talitenha! Que alegria imensa poder celebrar a vida de alguém tão especial e iluminada quanto você. Nossa amizade é um dos maiores e mais belos presentes que a vida me deu.
+                    </p>
+                    <p>
+                        Obrigado por cada sorriso, cada conselho, pelas risadas sem fim e por cada momento inesquecível que já compartilhamos. Você tem esse dom maravilhoso de tornar tudo ao seu redor mais leve e colorido. Amo você demais, minha amiga!
+                    </p>
+                    <p class="font-semibold text-party-pink">
+                        Que o seu novo ciclo seja repleto de amor, paz, saúde e que todos os seus sonhos se realizem. Você merece o mundo inteirinho!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section class="mb-20">
+            <div class="text-center mb-12">
+                <h2 class="font-cursive text-5xl text-gray-800 mb-2">Nossos Momentos</h2>
+                <p class="text-gray-500">Substitua as imagens abaixo pelas nossas melhores memórias!</p>
+            </div>
+
+            <!-- Grid de Fotos -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12 px-4 sm:px-8">
+                
+                <!-- Foto 1 -->
+                <div class="polaroid mx-auto w-full max-w-sm">
+                    <!-- Para usar fotos reais, basta trocar o link do src -->
+                    <img src="aula-eugenio.jpg" alt="">
+                    <div class="caption">Dupla do Eugênio</div>
+                </div>
+
+                <!-- Foto 2 -->
+                <div class="polaroid mx-auto w-full max-w-sm">
+                    <img src="descansando-dce.jpg" alt="">
+                    <div class="caption">Descansando no DCE</div>
+                </div>
+
+                <!-- Foto 3 -->
+                <div class="polaroid mx-auto w-full max-w-sm">
+                    <img src="festa-junina.jpg" alt="">
+                    <div class="caption">Festa Junina!</div>
+                </div>
+
+                <!-- Foto 4 -->
+                <div class="polaroid mx-auto w-full max-w-sm">
+                    <img src="acolhida-calouros.jpg" alt="">
+                    <div class="caption">A gente na acolhida dos calouros</div>
+                </div>
+
+                <!-- Foto 5 -->
+                <div class="polaroid mx-auto w-full max-w-sm">
+                    <img src="foto-sorrindo.jpg" alt="">
+                    <div class="caption">Dupla de BD2</div>
+                </div>
+
+                <!-- Foto 6 -->
+                <div class="polaroid mx-auto w-full max-w-sm">
+                    <img src="foto-sorrindo2.jpg" alt="Amizade verdadeira">
+                    <div class="caption">Amizade pra vida toda ❤️</div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-white/80 py-8 text-center mt-auto border-t border-gray-200 shadow-inner relative z-10">
+        <p class="text-xl font-light">Com muito amor e carinho,</p>
+        <p class="font-handwriting text-4xl text-party-purple mt-2">Giorgio</p>
+    </footer>
+
+    <script>
+        // Lógica de Confetes Customizada (Sem dependências externas)
+        const canvas = document.getElementById('confetti-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+        let animationId;
+
+        // Cores vibrantes de festa
+        const colors = ['#FF6B6B', '#A06CD5', '#FFE66D', '#4ECDC4', '#ff9ff3', '#feca57'];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                // Começa um pouco acima da tela
+                this.y = Math.random() * canvas.height - canvas.height;
+                this.size = Math.random() * 10 + 5;
+                this.color = colors[Math.floor(Math.random() * colors.length)];
+                // Velocidade de queda e vento horizontal
+                this.speedY = Math.random() * 3 + 2;
+                this.speedX = Math.random() * 4 - 2;
+                
+                // Rotação em 3D (ilusão)
+                this.rotation = Math.random() * 360;
+                this.rotationSpeed = Math.random() * 10 - 5;
+                this.oscillationSpeed = Math.random() * 0.1 + 0.05;
+                this.angle = Math.random() * Math.PI * 2;
+            }
+
+            update() {
+                this.y += this.speedY;
+                // Adiciona uma oscilação suave no eixo X
+                this.x += this.speedX + Math.sin(this.angle) * 1.5;
+                this.angle += this.oscillationSpeed;
+                this.rotation += this.rotationSpeed;
+
+                // Se o confete sair da tela por baixo, volta para o topo
+                if (this.y > canvas.height) {
+                    this.y = -20;
+                    this.x = Math.random() * canvas.width;
+                    this.speedY = Math.random() * 3 + 2;
+                }
+            }
+
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate((this.rotation * Math.PI) / 180);
+                
+                ctx.fillStyle = this.color;
+                
+                // Desenha pequenos retângulos (confetes)
+                ctx.beginPath();
+                // O scale da uma ilusão de que o confete está girando em 3D
+                ctx.scale(Math.cos((this.rotation * Math.PI) / 180), 1);
+                ctx.fillRect(-this.size / 2, -this.size / 2, this.size, this.size * 0.6);
+                ctx.restore();
+            }
+        }
+
+        function initConfetti() {
+            particles = [];
+            // Número de confetes com base na largura da tela
+            const particleCount = Math.min(Math.floor(window.innerWidth / 5), 150);
+            
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateConfetti() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            animationId = requestAnimationFrame(animateConfetti);
+        }
+
+        // Inicialização
+        window.addEventListener('resize', () => {
+            resizeCanvas();
+            initConfetti();
+        });
+
+        window.onload = () => {
+            resizeCanvas();
+            initConfetti();
+            animateConfetti();
+        };
+
+        // Efeito interativo: Adiciona um "sopro" nos confetes ao mover o mouse/tocar
+        window.addEventListener('mousemove', (e) => {
+            const mouseX = e.clientX;
+            const mouseY = e.clientY;
+            
+            particles.forEach(p => {
+                const dx = p.x - mouseX;
+                const dy = p.y - mouseY;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                
+                // Se o mouse chegar perto, "empurra" o confete
+                if (distance < 100) {
+                    p.x += dx * 0.05;
+                    p.y += dy * 0.05;
+                }
+            });
+        });
+
+    </script>
+</body>
+</html>
